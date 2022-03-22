@@ -34,6 +34,8 @@ char status_prefix[MAXLEN];
 char normal_border_color[MAXLEN];
 char active_border_color[MAXLEN];
 char focused_border_color[MAXLEN];
+char marked_border_color[MAXLEN];
+char focused_marked_border_color[MAXLEN];
 char presel_feedback_color[MAXLEN];
 
 padding_t padding;
@@ -95,6 +97,8 @@ void load_settings(void)
 	snprintf(normal_border_color, sizeof(normal_border_color), "%s", NORMAL_BORDER_COLOR);
 	snprintf(active_border_color, sizeof(active_border_color), "%s", ACTIVE_BORDER_COLOR);
 	snprintf(focused_border_color, sizeof(focused_border_color), "%s", FOCUSED_BORDER_COLOR);
+	snprintf(marked_border_color, sizeof(marked_border_color), "%s", MARKED_BORDER_COLOR);
+	snprintf(focused_marked_border_color, sizeof(focused_marked_border_color), "%s", FOCUSED_MARKED_BORDER_COLOR);
 	snprintf(presel_feedback_color, sizeof(presel_feedback_color), "%s", PRESEL_FEEDBACK_COLOR);
 
 	padding = (padding_t) PADDING;

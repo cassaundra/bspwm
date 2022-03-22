@@ -694,6 +694,12 @@ Global Settings
 'focused_border_color'::
 	Color of the border of a focused window of a focused monitor.
 
+'marked_border_color'::
+	Color of the border of an unfocused, marked window.
+
+'focused_marked_border_color'::
+	Color of the border of an focused, marked window.
+
 'presel_feedback_color'::
 	Color of the *node --presel-{dir,ratio}* message feedback area.
 

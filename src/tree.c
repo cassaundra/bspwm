@@ -488,7 +488,7 @@ bool activate_node(monitor_t *m, desktop_t *d, node_t *n)
 		if (d->focus != n) {
 			for (node_t *f = first_extrema(d->focus); f != NULL; f = next_leaf(f, d->focus)) {
 				if (f->client != NULL && !is_descendant(f, n)) {
-					window_draw_border(f->id, get_border_color(false, (m == mon)));
+					window_draw_border(f->id, get_border_color(false, (m == mon), f->marked));
 				}
 			}
 		}
@@ -614,7 +614,7 @@ bool focus_node(monitor_t *m, desktop_t *d, node_t *n)
 	if (d->focus != n) {
 		for (node_t *f = first_extrema(d->focus); f != NULL; f = next_leaf(f, d->focus)) {
 			if (f->client != NULL && !is_descendant(f, n)) {
-				window_draw_border(f->id, get_border_color(false, true));
+				window_draw_border(f->id, get_border_color(false, true, f->marked));
 			}
 		}
 	}
@@ -2198,6 +2198,8 @@ void set_marked(monitor_t *m, desktop_t *d, node_t *n, bool value)
 	}
 
 	n->marked = value;
+
+	draw_border(n, d->focus == n, (m == mon));
 
 	put_status(SBSC_MASK_NODE_FLAG, "node_flag 0x%08X 0x%08X 0x%08X marked %s\n", m->id, d->id, n->id, ON_OFF_STR(value));
 
